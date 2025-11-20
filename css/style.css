@@ -1,0 +1,475 @@
+/* -------------------------------------
+    1. Variables du thème par défaut
+------------------------------------- */
+:root {
+    /* couleurs */
+
+    --accent: #6625D0;
+    /* violet artistique */
+
+    --text: #6625D0;
+    /* violet artistique, utilisé pour l'écriture */
+
+    --muted: #555;
+    /* couleur texte liste */
+
+    --bg: #faf5ff;
+    /* couleur fond de page */
+
+    --card: #ffffff;
+    /* couleur fond de bloc */
+
+    --highlight: #f43f5e;
+    /* rose vif, utilisé pour les détails */
+
+    --secondary: #f59e0b;
+    /* orange solaire, utilisé pour les petits titres */
+
+    --shadow: #eed0fe;
+    --shadow2: #cca5e1;
+    /* couleurs des ombres et dégradés */
+}
+
+/* -------------------------------
+   1. Thème clair par défaut
+----------------------------------
+:root {
+    --bg: #faf5ff;
+    --text: #6625D0;
+    --accent: #6625D0;
+}*/
+
+/* ---------------------------------
+   3. Override manuel via le switch (prioritaire)
+----------------------------------*/
+#theme-toggle:checked~* {
+    --bg: #050a00;
+    --text: #99da2f;
+    --accent: #99da2f;
+    --card: #000000;
+    --muted: #aaaaaa;
+    --shadow: #112f01;
+    --shadow2: #335a1e;
+}
+
+/* ---------------------------------
+   4. Style global
+----------------------------------*/
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+.content {
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    padding: 40px;
+    transition: background 0.4s ease, color 0.4s ease;
+}
+
+h1 {
+    color: var(--accent);
+}
+
+/* ---------------------------------
+   5. Bouton toggle avec icônes
+----------------------------------*/
+#theme-toggle {
+    display: none;
+}
+
+.toggle {
+    width: 60px;
+    height: 30px;
+    background: var(--shadow2);
+    border-radius: 50px;
+    position: fixed;
+    top: 50px;
+    right: 15px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 3px 6px;
+    box-sizing: border-box;
+    transition: background 0.3s;
+}
+
+.toggle .sun,
+.toggle .moon {
+    font-size: 18px;
+    opacity: 1;
+    transition: opacity 0.3s ease;
+}
+
+/* Icônes au-dessus du toggle */
+.toggle .sun-icon {
+    position: absolute;
+    top: -2px;
+    /* hauteur au-dessus du bouton */
+    left: 70%;
+    transform: translateX(-50%);
+    font-size: 22px;
+    pointer-events: none;
+    /* pas cliquable */
+    transition: opacity 0.3s ease;
+}
+
+.toggle .moon-icon {
+    position: absolute;
+    top: -2px;
+    /* hauteur au-dessus du bouton */
+    left: 30%;
+    transform: translateX(-50%);
+    font-size: 22px;
+    pointer-events: none;
+    /* pas cliquable */
+    transition: opacity 0.3s ease;
+}
+
+/* Soleil par défaut */
+.sun {
+    opacity: 1;
+}
+
+/* Lune masquée par défaut */
+.moon {
+    opacity: 0;
+}
+
+/* Quand on active le mode sombre */
+#theme-toggle:checked+.toggle .sun {
+    opacity: 0;
+}
+
+#theme-toggle:checked+.toggle .moon {
+    opacity: 1;
+}
+
+/* bulle mobile */
+.toggle::after {
+    content: "";
+    width: 24px;
+    height: 24px;
+    background: #fff;
+    border-radius: 50%;
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    transition: transform 0.3s ease;
+}
+
+/* Quand le mode sombre est activé */
+#theme-toggle:checked+.toggle {
+    background: var(--muted);
+}
+
+#theme-toggle:checked+.toggle::after {
+    transform: translateX(30px);
+}
+
+/* Icônes : la lune apparaît en mode sombre */
+#theme-toggle:not(:checked)+.toggle .moon {
+    opacity: 0;
+}
+
+#theme-toggle:checked+.toggle .sun {
+    opacity: 0;
+}
+
+body {
+    font-family: 'Poppins', system-ui, Segoe UI, Helvetica, Arial, sans-serif;
+    margin: 0;
+    color: var(--accent);
+    background: linear-gradient(135deg, var(--bg), var(--shadow));
+    transition: background 0.4s ease;
+}
+
+
+* {
+    box-sizing: border-box
+}
+
+img {
+    width: 250px;
+}
+
+header {
+    /* barre du haut */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px 24px;
+    /* header fin */
+    background: var(--card);
+    backdrop-filter: blur(8px);
+    border-bottom: 2px solid var(--highlight);
+    z-index: 1000;
+    transition: box-shadow .3s, background .3s, border-color .3s;
+}
+
+header.scrolled {
+    box-shadow: 0 6px 16px var(--shadow);
+    background: var(--card);
+    border-color: var(--secondary);
+}
+
+.titre {
+    color: var(--accent);
+}
+
+/* -----------------
+    mise en page
+----------------- */
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 40px 20px 32px 20px;
+    /* espace minimal sous le header */
+    background: var(--card);
+    border-radius: 16px;
+    box-shadow: 0 10px 30px var(--shadow);
+    animation: fadeIn 1s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px)
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0)
+    }
+}
+
+/* ------------------------------------
+    apparence police barre du haut
+------------------------------------ */
+.brand {
+    font-weight: 700;
+    font-size: 16px;
+    letter-spacing: 1px;
+    color: var(--highlight)
+}
+
+nav a {
+    margin-left: 16px;
+    text-decoration: none;
+    color: var(--accent);
+    font-weight: 600;
+    transition: color .3s, transform .3s
+}
+
+nav a:hover {
+    color: var(--secondary);
+    transform: scale(1.05)
+}
+
+/* ------------------------------------------
+    emplacement du carré des compétences
+------------------------------------------ */
+.hero {
+    display: grid;
+    grid-template-columns: 1fr 300px;
+    gap: 24px;
+    align-items: center
+}
+
+.eyebrow {
+    font-size: 12px;
+    color: var(--highlight);
+    text-transform: uppercase;
+    letter-spacing: 2px
+}
+
+h1 {
+    font-size: 30px;
+    margin: 2px 0 6px;
+    line-height: 1.1;
+    color: var(--accent)
+}
+
+p.lead {
+    font-size: 15px;
+    color: var(--muted);
+    margin: 0 0 12px
+}
+
+.cta {
+    display: inline-block;
+    padding: 10px 16px;
+    border-radius: 24px;
+    border: none;
+    background: var(--highlight);
+    color: var(--card);
+    text-decoration: none;
+    font-weight: 700;
+    box-shadow: 0 4px 12px var(--shadow);
+    transition: all .3s
+}
+
+.cta:hover {
+    background: var(--secondary);
+    box-shadow: 0 6px 16px var(--secondary);
+    transform: translateY(-2px)
+}
+
+/* -------------------------------------
+    apparence carré des compétences
+------------------------------------- */
+.profile-card {
+    background: linear-gradient(135deg, var(--shadow), var(--shadow2));
+    padding: 12px;
+    border-radius: 12px;
+    text-align: justify;
+    box-shadow: 0 4px 12px var(--shadow);
+    animation: popIn 1.2s ease
+}
+
+@keyframes popIn {
+    from {
+        opacity: 0;
+        transform: scale(0.8)
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1)
+    }
+}
+
+.avatar {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    object-fit: cover
+}
+
+.skills {
+    margin-top: 12px;
+    text-align: left
+}
+
+.skills h4 {
+    margin: 6px 0 4px;
+    font-size: 12px;
+    color: var(--secondary)
+}
+
+.skills ul {
+    margin: 0;
+    padding-left: 14px;
+    color: var(--muted);
+    font-size: 13px
+}
+
+/* ------------------------------------------
+    distance entre barre du haut et page
+------------------------------------------ */
+section {
+    margin-top: 28px
+}
+
+.grid-projects {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 14px
+}
+
+.project {
+    background: linear-gradient(135deg, var(--card), var(--bg));
+    border-radius: 10px;
+    padding: 12px;
+    min-height: 120px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border: 1px solid var(--bg);
+    transition: transform .3s, box-shadow .3s
+}
+
+.project:hover {
+    transform: translateY(-4px) scale(1.02);
+    box-shadow: 0 8px 20px var(--shadow)
+}
+
+.project h3 {
+    margin: 0 0 4px;
+    font-size: 15px;
+    color: var(--accent)
+}
+
+.project p {
+    margin: 0;
+    color: var(--muted);
+    font-size: 12px
+}
+
+/* -------------------------------------------
+    barre de pointillés en bas de la page
+------------------------------------------- */
+footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 32px;
+    padding-top: 12px;
+    border-top: 2px dashed var(--highlight)
+}
+
+
+/* bouton retour haut */
+/*
+#backToTop{
+    position:fixed;
+    bottom:18px;
+    right:18px;
+    background:var(--highlight);
+    color:#fff;
+    border:none;
+    border-radius:50%;
+    width:40px;
+    height:40px;
+    font-size:18px;
+    cursor:pointer;
+    box-shadow:0 4px 12px rgba(244,63,94,0.4);
+    display:none;
+    align-items:center;
+    justify-content:center;
+    transition:background .3s, transform .3s;
+    z-index:1000;
+}
+#backToTop:hover{
+    background:var(--secondary);
+    transform:translateY(-2px);
+}
+*/
+
+@media (max-width:900px) {
+    .hero {
+        grid-template-columns: 1fr;
+        gap: 12px
+    }
+}
+
+@media (max-width:600px) {
+    .container {
+        margin: 0 10px;
+        padding: 60px 12px 12px 12px
+    }
+
+    .brand {
+        font-size: 14px
+    }
+
+    h1 {
+        font-size: 24px
+    }
+}
