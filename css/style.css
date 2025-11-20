@@ -42,7 +42,7 @@
 /* ---------------------------------
    3. Override manuel via le switch (prioritaire)
 ----------------------------------*/
-#theme-toggle:checked~* {
+body:has(#theme-toggle:checked) {
     --bg: #050a00;
     --text: #99da2f;
     --accent: #99da2f;
