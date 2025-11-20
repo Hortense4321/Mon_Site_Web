@@ -1,33 +1,75 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
+
+
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <title>Document</title>
+    <link rel="stylesheet" href="css/style.css">
+    <title>Site Internet de Hortense</title>
 </head>
 
 <body>
-    <!--contenu de ma page-->
-    <header>
+    <input type="checkbox" id="theme-toggle">
+    <label for="theme-toggle" class="toggle">
+        <span class="sun-icon sun">☀️</span>
+        <span class="moon-icon moon">🌙</span>
+    </label>
+    <header> <!-- barre du haut -->
         <nav>
             <a href="index.html">Accueil</a>
-            <a href="cv.pdf">Mon CV</a>
-            <a href="profil.html">Mon Profil</a>
-            <a href="portfolio.html">Portfolio</a>
-            <a href="https://www.univ-littoral.fr">ULCO</a>
-            <a href="logo_ulco.png">logo ulco</a>
+            <a href="profil.html">Mon Portfolio HTML</a>
+            <a href="https://www.univ-littoral.fr" target="_blank">ULCO</a>
         </nav>
     </header>
-    <main>
-        <h1 style="color:oklab(50.768% 0.11103 0.00603)">Voici mon portfolio !</h1>
-        <p>Prenez le temps de le regarder, ça en vaut le coup</p>
+    <main class="content dark container" role="main" id="top">
+        <section class="hero" aria-labelledby="intro">
+            <article>
+                <section class="eyebrow">Portfolio de Hortense Goessens - Étudiante · DEUST Webmaster (1ère année)
+                </section>
+                <figure>
+                    <img src="images/logo_ulco.png" alt="Logo de l'Université du Littoral Côte d'Opale">
+                    <figcaption>
+                    </figcaption>
+                </figure>
+                <h1 id="intro" class="titre">Bienvenue sur mon site internet</h1>
+                <p class="lead">J'ai créé ce site pour pouvoir mettre mon portfolio et mon cv en ligne :</p>
+                <a class="cta" href="docs/GOESSENS_Hortense_portfolio.pdf" target="_blank">Mon portfolio PDF</a>
+                <a class="cta" href="docs/cv-1.png" target="_blank">Mon CV</a>
+                <section class="profile-card">
+                    <p>Logiciels que je sais utiliser :</p>
+                    <ul>
+                        <li>Adobe Photoshop</li>
+                        <li>Illustrator</li>
+                        <li>InDesign</li>
+                        <li>Procreate</li>
+                        <li>Capcut (montage vidéo)</li>
+                        <li>notions de Python - orientée UX</li>
+                    </ul>
+                </section>
+                <br>
+            </article>
+            <aside class="profile-card" aria-label="Photo et compétences">
+                <img class="avatar" src="images/photo_profil_dessin.PNG" alt="Portrait de Hortense Goessens">
+                <div class="skills">
+                    <h4>Compétences</h4>
+                    <ul> <!-- liste de mes compétences -->
+                        <li>Design graphique & illustration</li>
+                        <li>Web design & maquettage</li>
+                        <li>Montage vidéo & animation</li>
+                        <li>Communication client</li>
+                    </ul>
+                </div>
+            </aside>
+        </section>
+        <section id="about" aria-labelledby="about-title">
+            <h2 class="titre">À venir</h2>
+        </section>
+        <footer class="dark">
+            <p>&copy; 2025 Mon Site</p>
+        </footer>
     </main>
-    <p onclick="alert('bonjour')">Cliquez je dis bonjour</p>
-    <footer>
-        <p>&copy; 2025 Mon Site</p>
-    </footer>
+    <!--contenu de ma page-->
 </body>
 
 </html>

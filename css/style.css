@@ -333,6 +333,19 @@ p.lead {
     animation: popIn 1.2s ease
 }
 
+/* ---------------------
+    apparence carrés
+--------------------- */
+*.profile-card2 {
+    background: linear-gradient(135deg, var(--shadow), var(--shadow2));
+    width: 60%;
+    padding: 12px;
+    border-radius: 12px;
+    text-align: justify;
+    box-shadow: 0 4px 12px var(--shadow);
+    animation: popIn 1.2s ease
+}
+
 @keyframes popIn {
     from {
         opacity: 0;
